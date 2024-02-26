@@ -1,0 +1,55 @@
+FORMAS DE REALIZAR CONSULTAS
+
+{ clave: valor }
+{ <campo>: <valor> }
+{ <campo>: { <operador>:<valor> } }
+
+Ej: buscar todas las personas con nombre igual a Ana
+{ nombre: "Ana" }
+{ nombre: { $eq: "Ana" } }
+
+
+OPERADORES MATEMÁTICOS P/MongoDB
+
+$eq ---> igual que (equal)
+$ne ---> distinto que (not equal)
+$gt ---> mayor que (greater than)
+$gte ---> mayor o igual que (greater than or equal)
+$lt ---> menor que (lower than)
+$lte ---> menor o igual que (lower than or equal)
+
+$in ---> el/los valores dentro de un array
+Ej: { categorias: { $in: ["cat1", "cat2"] } }
+
+$nin ---> operación contraria a $in, obtiene los documentos cuyo valor NO estén en el array
+Ej: { categorias: { $nin: ["cat2", "cat4"] } }
+
+
+
+OPERADORES LÓGICOS (AND, OR):
+
+AND
+{ <campo1>:<valor1>,  <campo2>:<valor2>, <campo3>:<valor3> }
+
+OR
+{ $or: [ { consulta1 }, { consulta2 } ] }
+
+
+AND - OR
+{ consulta1, { $or: [ { consulta2 }, { consulta3 } ] } }
+
+
+EXTRAS:
+
+$exists ---> un campo exista o no
+Ej: { email: { $exists: true } }
+
+$regex: /texto_a_buscar$/   ---> Texto al final
+Ej: { descripcion: { $regex: /hola$/ } }
+
+$regex: /^texto/    ---> Texto al comienzo
+Ej: { descripcion: { $regex: /^Lorem/ } }
+
+$regex: /texto/   ---> Texto en el medio
+Ej: { descripcion: { $regex: /pulgadas/i } }  ----> la "i" significa que me busca si es MAYUSCULAS o MINUSCULAS
+
